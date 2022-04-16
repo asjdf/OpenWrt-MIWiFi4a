@@ -129,7 +129,7 @@ jobs:
           zip -r ./allfiles.zip ./*
           cd packages
           zip -r ../packages.zip ./*
-      - name: 获取当前日期
+      - name: 根据日期生成版号
         run: |
           CURRENT_TIME=$(TZ=Asia/Shanghai date +'%y.%-m.%-d.%H%M%S')
           CURRENT_TIME=${CURRENT_TIME:1}
@@ -140,7 +140,7 @@ jobs:
         if: github.event.inputs.release == 'true' && env.RELEASE_FIRMWARE_VALUE != ''
         uses: svenstaro/upload-release-action@v2
         with:
-          repo_token: ${{ secrets.RELEASE_FIRMWARE }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: collected_firmware/*
           tag: ${{ env.TAG_NAME }}
           release_name: "${{ env.RELEASE_PRE }} ${{ env.RELEASE_TITLE }}" 
@@ -149,7 +149,7 @@ jobs:
           body: "${{ env.ZH_TITLE }}<br/>${{ env.KEY_INFO }}<br/>${{ github.event.inputs.version_description }}"
           file_glob: true
         env:
-          RELEASE_FIRMWARE_VALUE: ${{ secrets.RELEASE_FIRMWARE }}
+          RELEASE_FIRMWARE_VALUE: ${{ secrets.GITHUB_TOKEN }}
       - name: 上传固件到artifact
         if: github.event.inputs.artifact == 'true' || steps.upload-release.conclusion == 'skipped'
         uses: actions/upload-artifact@v3
