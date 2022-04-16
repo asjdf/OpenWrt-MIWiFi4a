@@ -6,7 +6,7 @@ release_title=lede for xiaomi 4a gigabit
 zh_title=小米4A千兆版lede固件
 版本：lean lede源码
 登陆IP 192.168.31.1，密码password
-应用：neobird主题、定时重启、多播等。
+应用：neobird主题、定时重启、多播、广告屏蔽、Shadowsocks等。
 # end of 1 model firmware
 -----------------------------------------------------------------------------------------
 # start of 1-1 model firmware
