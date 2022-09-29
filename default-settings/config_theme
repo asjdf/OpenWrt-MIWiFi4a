@@ -1,3 +1,3 @@
-#修改默认主题为neobird
-uci set luci.main.mediaurlbase=/luci-static/bootstrap
+#修改默认主题为argon
+uci set luci.main.mediaurlbase=/luci-static/argon
 uci commit luci
